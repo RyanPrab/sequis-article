@@ -50,6 +50,9 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <div className='text-red-500'>
+          Using Tailwind
+        </div>
       </main>
 
       <footer className={styles.footer}>
