@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import DefaultLayout from '../components/Layout/DefaultLayout';
+import { withArticle } from '../utils';
 
-export default function Home(props) {
+function Home(props) {
+  const { articles } = props;
+  const { data: articlesData, error: articlesError } = articles;
+
+  console.log(articlesData);
   return (
     <DefaultLayout>
       <div>
@@ -21,3 +26,5 @@ export default function Home(props) {
     </DefaultLayout>
   )
 }
+
+export default withArticle(Home);
