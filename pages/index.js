@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import DefaultLayout from '../components/Layout/DefaultLayout'
+import Head from 'next/head';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <DefaultLayout>
       <div>

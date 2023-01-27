@@ -1,4 +1,5 @@
 import styles from './Header.module.css';
+import Menu from './Menu';
 
 export default function Header(props) {
   return (
@@ -7,9 +8,7 @@ export default function Header(props) {
       >
         Logoooooo Web Developer
       </div>
-      <div>
-        Menu Section
-      </div>
+      <Menu />
     </div>
   )
 }
