@@ -7,6 +7,9 @@ function Home(props) {
   const { articles } = props;
   const { data: articlesData, error: articlesError } = articles;
 
+  const articleList = articlesData?.data?.filter((item) => !item.is_featured)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
   return (
     <DefaultLayout>
       <div>
@@ -20,7 +23,7 @@ function Home(props) {
           data-testid="container"
           className="flex flex-col items-center flex-1 flex-shrink-0 space-y-10 container mx-auto py-6 mt-4"
         >
-          <ArticleList articles={articlesData} error={articlesError}/>
+          <ArticleList articles={articleList} error={articlesError}/>
         </div>
       </div>
     </DefaultLayout>
