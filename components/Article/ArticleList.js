@@ -55,11 +55,12 @@ export default function ArticleList(props) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-4 lg:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-4 lg:gap-10 w-full">
         {
           articles?.slice(0, offsetArray)?.map((article, index) => {
             return (
               <motion.div
+                className="w-full"
                 key={index}
                 initial={{ opacity: 0, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
