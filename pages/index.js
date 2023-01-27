@@ -1,7 +1,15 @@
 import Head from 'next/head';
 import DefaultLayout from '../components/Layout/DefaultLayout';
+import { withArticle } from '../utils';
+import ArticleList from '../components/Article/ArticleList';
 
-export default function Home(props) {
+function Home(props) {
+  const { articles } = props;
+  const { data: articlesData, error: articlesError } = articles;
+
+  const articleList = articlesData?.data?.filter((item) => !item.is_featured)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
   return (
     <DefaultLayout>
       <div>
@@ -15,9 +23,11 @@ export default function Home(props) {
           data-testid="container"
           className="flex flex-col items-center flex-1 flex-shrink-0 space-y-10 container mx-auto py-6 mt-4"
         >
-          Article List
+          <ArticleList articles={articleList} error={articlesError}/>
         </div>
       </div>
     </DefaultLayout>
   )
 }
+
+export default withArticle(Home);
