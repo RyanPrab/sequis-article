@@ -1,15 +1,9 @@
 import Head from 'next/head';
 import DefaultLayout from '../components/Layout/DefaultLayout';
-import { withCategory } from '../utils';
 
-function Home(props) {
-  const { categories } = props;
-  const { data: categoriesData, error: categoriesError } = categories;
-
+export default function Home(props) {
   return (
-    <DefaultLayout
-      categories={categoriesData}
-    >
+    <DefaultLayout>
       <div>
         <Head>
           <title>Sequis Article</title>
@@ -27,5 +21,3 @@ function Home(props) {
     </DefaultLayout>
   )
 }
-
-export default withCategory(Home);
