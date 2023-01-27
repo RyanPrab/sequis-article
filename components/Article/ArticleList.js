@@ -1,5 +1,6 @@
 import Article from "./Article";
 import ContentLoader from 'react-content-loader';
+import { motion } from 'framer-motion';
 
 export default function ArticleList(props) {
   const { articles, error } = props;
@@ -32,7 +33,14 @@ export default function ArticleList(props) {
       {
         articles?.data?.map((article, index) => {
           return (
-            <Article key={index} article={article} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Article article={article} />
+            </motion.div>
           )
         })
       }
