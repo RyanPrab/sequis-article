@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 export default function ArticleList(props) {
   const { articles, error } = props;
 
+  const articleList = articles?.data?.filter((item) => !item.is_featured)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
   if (!articles || error) {
     const arrayLoader = new Array(10).fill(' ');
     return (
@@ -31,7 +34,7 @@ export default function ArticleList(props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-4 lg:gap-10">
       {
-        articles?.data?.map((article, index) => {
+        articleList?.map((article, index) => {
           return (
             <motion.div
               key={index}
