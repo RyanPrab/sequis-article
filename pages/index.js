@@ -2,12 +2,16 @@ import Head from 'next/head';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import { withArticle } from '../utils';
 import ArticleList from '../components/Article/ArticleList';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 function Home(props) {
   const { articles } = props;
   const { data: articlesData, error: articlesError } = articles;
+  const router = useRouter();
+  const isFeatured = router.query.featured ? true : false;
 
-  const articleList = articlesData?.data?.filter((item) => !item.is_featured)
+  const articleList = articlesData?.data?.filter((item) => item.is_featured == isFeatured)
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   return (
