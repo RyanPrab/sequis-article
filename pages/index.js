@@ -20,7 +20,7 @@ function Home(props) {
           data-testid="container"
           className="flex flex-col items-center flex-1 flex-shrink-0 space-y-10 container mx-auto py-6 mt-4"
         >
-          <ArticleList articles={articlesData}/>
+          <ArticleList articles={articlesData} error={articlesError}/>
         </div>
       </div>
     </DefaultLayout>
