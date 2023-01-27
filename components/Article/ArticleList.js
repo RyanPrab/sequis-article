@@ -7,8 +7,12 @@ import { useState, useEffect } from "react";
 export default function ArticleList(props) {
   const { articles, error } = props;
 
-  const [offsetArray, setOffsetArray] = useState(10);
+  const [offsetArray, setOffsetArray] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  useEffect(() => {
+    setOffsetArray(10);
+  }, [articles]);
 
   const moreArticleHandler = () => {
     setOffsetArray(offsetArray + 10);
@@ -19,6 +23,10 @@ export default function ArticleList(props) {
       if (articles.length <= offsetArray) {
         setIsButtonVisible(false);
       }
+    }
+
+    return () => {
+      setIsButtonVisible(true);
     }
   }, [articles, offsetArray]);
 
