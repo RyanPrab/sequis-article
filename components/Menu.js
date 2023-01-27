@@ -25,8 +25,9 @@ function Menu(props) {
           return (
             <Link
               key={index}
-              href={menu.id > 0 ? (`/categories/${menu.id}`) : ('/')}
-              className={`w-48 text-sm text-black font-medium hover:text-orange-500 ${isOdd && ('border-b-2 border-black pb-2')}`}>
+              href={menu.id > 0 ? (`/categories/${menu.id}`) : ({pathname: '/', query: {featured: true}})}
+              className={`w-48 text-sm text-black font-medium hover:text-orange-500 ${isOdd && ('border-b-2 border-black pb-2')}`}
+            >
               {menu.title}
             </Link>
           )
