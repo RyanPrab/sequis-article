@@ -1,4 +1,5 @@
 import Header from "../Header"
+import Footer from "../Footer"
 
 export default function DefaultLayout(props) {
   return (
@@ -8,6 +9,7 @@ export default function DefaultLayout(props) {
       </div>
       <div className="bg-white min-screen">
         {props.children}
+        <Footer/>
       </div>
     </div>
   )
