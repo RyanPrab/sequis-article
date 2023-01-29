@@ -27,7 +27,7 @@ function DetailPage(props) {
         >
           {articleList?.map((article, index) => {
             return (
-              <ArticleDetail key={index} article={article} />
+              <ArticleDetail key={index} article={article} error={articlesError} />
             )
           })}
         </div>
