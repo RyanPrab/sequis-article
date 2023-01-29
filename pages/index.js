@@ -2,6 +2,7 @@ import Head from 'next/head';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import { withArticle } from '../utils';
 import ArticleList from '../components/Article/ArticleList';
+import FeaturedArticle from '../components/Article/FeaturedArticle';
 import { useRouter } from 'next/router';
 
 function Home(props) {
@@ -20,6 +21,8 @@ function Home(props) {
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   }
 
+  const featuredArticle = articlesData?.data?.filter((item) => item.is_featured === true);
+
   return (
     <DefaultLayout>
       <div>
@@ -34,6 +37,7 @@ function Home(props) {
           className="flex flex-col items-center flex-1 flex-shrink-0 space-y-10 container mx-auto py-6 mt-4"
         >
           <ArticleList articles={articleList} error={articlesError}/>
+          <FeaturedArticle articles={featuredArticle} error={articlesError} />
         </div>
       </div>
     </DefaultLayout>
