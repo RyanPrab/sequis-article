@@ -2,6 +2,7 @@ import Head from 'next/head';
 import DefaultLayout from '../../components/Layout/DefaultLayout';
 import { withArticle } from '../../utils';
 import { useRouter } from 'next/router';
+import { ArticleDetail } from '../../components/Article/Detail';
 
 function DetailPage(props) {
   const { articles } = props;
@@ -24,7 +25,11 @@ function DetailPage(props) {
           data-testid="container"
           className="flex flex-col items-center flex-1 flex-shrink-0 space-y-10 container mx-auto py-6 mt-4"
         >
-          Detail
+          {articleList?.map((article, index) => {
+            return (
+              <ArticleDetail key={index} article={article} />
+            )
+          })}
         </div>
       </div>
     </DefaultLayout>
