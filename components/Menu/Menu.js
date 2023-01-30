@@ -39,7 +39,7 @@ function Menu(props) {
             <Link
               key={index}
               href={menu.id > 0 ? ({pathname: '/', query: {id: menu.id}}) : ({pathname: '/', query: {featured: true}})}
-              className={`w-full md:w-48 text-sm text-black font-medium hover:text-orange-500 ${isActive && ('text-orange-500')} ${isOdd && ('md:border-b-2 md:border-black mb:pb-2')}`}
+              className={`w-full md:w-48 text-sm font-medium hover:text-orange-500 ${isActive ? ('text-orange-500') : ('text-black ')} ${isOdd && ('md:border-b-2 md:border-black mb:pb-2')}`}
               onClick={hideMenu}
             >
               {menu.title}
