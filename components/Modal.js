@@ -1,8 +1,19 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function Modal(props) {
   const { shown, children, hideModal } = props;
+
+  useEffect(() => {
+    if (window !== undefined) {
+      document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+    }
+
+    return () => {
+      document.documentElement.style.overflow = 'auto';  // firefox, chrome
+    }
+  }, [shown]);
 
   if (!shown) {
     return null;
