@@ -22,6 +22,12 @@ export function ArticleDetail(props) {
     )
   }
 
+  const publishDate = new Date(article?.created_at).toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+
   return (
     <motion.div
       className="flex flex-col space-y-6 items-center w-full"
@@ -36,6 +42,14 @@ export function ArticleDetail(props) {
           alt={article?.title}
           fill
         />
+        <div className="absolute bg-white flex flex-col space-y-0.5 rounded-tr-md p-2 bottom-0">
+          <div className="text-xs">
+            {`Published ${publishDate}`}
+          </div>
+          <div className="text-xs">
+            By <span className="font-medium">{article.author}</span>
+          </div>
+        </div>
       </div>
       <div className="flex flex-col space-y-6 px-14 w-full">
         <h1 className="text-black font-semibold text-center text-xl md:text-2xl">
